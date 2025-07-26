@@ -1,12 +1,11 @@
 #include <iostream>
 using namespace std;
 bool isPrime (int x){
-    bool f = true;
     for (int k=2;k<=x-1;k++){
         if (x%k==0)
-        f = false;
+        return false;
     }
-    return f;
+    return true;
 }
 void result (int n){
     for (int i=2;i<=n;i++){
