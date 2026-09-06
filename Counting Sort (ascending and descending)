@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void printer(int arr[],int n){
+    for (int i=0;i<n;i++){
+        cout<<arr[i]<<", ";
+    }
+}
+void countingSortAscending(int arr[],int n){
+    int freq [1000]= {0};
+    int maxVal = INT_MIN, minVal = INT_MAX;
+    for (int i=0;i<n;i++){
+        maxVal = max(maxVal,arr[i]);
+        minVal = min(minVal,arr[i]);
+        freq[arr[i]]++;
+    }
+    for (int i=minVal,j=0;i<=maxVal;i++){
+        while(freq[i]>0){
+            arr[j++]=i;
+            freq[i]--;
+        }
+    }
+    printer(arr,n);
+}
+void countingSortDescending(int arr[],int n){
+    int freq [1000]= {0};
+    int maxVal = INT_MIN, minVal = INT_MAX;
+    for (int i=0;i<n;i++){
+        maxVal = max(maxVal,arr[i]);
+        minVal = min(minVal,arr[i]);
+        freq[arr[i]]++;
+    }
+    for (int i=maxVal,j=0;i>=minVal;i--){
+        while(freq[i]>0){
+            arr[j++]=i;
+            freq[i]--;
+        }
+    }
+    printer(arr,n);
+}
+int main (){
+    int n;
+    cout<<"Enter the size of the array:"<<endl;
+    cin>>n;
+    int arr[n];
+    cout<<"Enter the elements of the array:"<<endl;
+    for (int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    cout<<"The ascending order is:"<<endl;
+    countingSortAscending(arr,n);
+    cout<<endl;
+    cout<<"The descending order is:"<<endl;
+    countingSortDescending(arr,n);
+    return 0;
+}
